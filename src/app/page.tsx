@@ -1,6 +1,9 @@
 "use client";
+// REACT
+import { useState } from "react";
+// COMPONENTS
 import Image from "next/image";
-import { useState, useEffect } from "react";
+
 
 export default function Home() {
   const [pokemon, setPokemon] = useState();
@@ -12,20 +15,17 @@ export default function Home() {
     setPokemon(data);
   }
 
-  const printInfo = () => {
-    console.log(pokemon);
-  };
-
   const handleSearch = async () => {
     fetchPokemon();
   };
+
   return (
     <div>
       <textarea onChange={(e) => setSearch(e.target.value)} />
       <button onClick={handleSearch}>Search</button>
       {pokemon && (
         <div>
-          <h1 onClick={() => printInfo()}>{pokemon["name"]}</h1>
+          <h1>{pokemon["name"]}</h1>
           <Image
             src={pokemon["sprites"]["front_default"]}
             alt={pokemon["name"]}
