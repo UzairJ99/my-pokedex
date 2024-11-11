@@ -16,21 +16,34 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Overview
+The My-Pokédex App is a responsive web application built with Next.js and TypeScript that allows users to search for Pokémon by name and view details such as type, abilities, and base stats. The app fetches data from the PokeAPI, caches responses in Redis to improve performance and reduce API calls, and is containerized using Docker for consistency across development, testing, and production environments. The project is integrated with a CI/CD pipeline for automated testing and deployment, ensuring reliable updates and a smooth development process.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Key Features
+Search Functionality: Users can search for Pokémon by name or ID to retrieve detailed information.
 
-## Learn More
+Pokémon Details: Display essential details like type, abilities, height, weight, and stats.
 
-To learn more about Next.js, take a look at the following resources:
+Caching with Redis: Caches data for frequently searched Pokémon to reduce API load and improve response time.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Mobile-First Responsive Design: Adapts seamlessly across various devices and screen sizes.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Automated CI/CD Pipeline: Uses GitHub Actions for continuous integration and deployment, ensuring automated testing and updates.
 
-## Deploy on Vercel
+## Tech Stack
+Frontend: Next.js (App Directory), TypeScript, CSS Modules
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+API: PokeAPI for retrieving Pokémon data
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Caching: Redis for storing and caching frequently requested data
+
+Containerization: Docker for consistent environment setup and easy deployment
+
+CI/CD: GitHub Actions for automated builds, tests, and deployments
+
+## Project Goals
+Improve Performance: Caching with Redis reduces response times and minimizes API requests.
+
+Scalability: Docker enables easy scaling and deployment to various environments.
+
+Streamlined Development: CI/CD pipeline allows automated testing and deployment, minimizing downtime and maintaining code quality.
