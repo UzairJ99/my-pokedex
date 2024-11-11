@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --pokedex-color: #891d1d;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--pokedex-color);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+textarea {
+  color: black;
+  width: 50%;
+  border-radius: 5px;
+  padding: 2vw;
+  margin: 1vw;
+}
+
+.pokedexContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: auto auto;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 5vh;
+}
+
+.pokedexName {
+  font-weight: bold;
+  font-size: clamp(20px, 3vw, 30px);
+}
+
+.searchBtn {
+  background-color: rgb(216, 92, 92);
+  color: black;
+  padding: 1vw 2vw;
+  border-radius: 5px;
+  margin: 1vw;
+  width: 50%;
+}

@@ -1,11 +1,10 @@
-
-import { createClient } from '@redis/client';
+import { createClient } from "@redis/client";
 
 const redisClient = createClient({
-  url: process.env.REDIS_URL, // Ensure REDIS_URL is set in your .env.local
+  url: process.env.REDIS_URL,
 });
 
-redisClient.on('error', (err) => console.error('Redis Client Error', err));
+redisClient.on("error", (err) => console.error("Redis Client Error", err));
 
 (async () => {
   await redisClient.connect();

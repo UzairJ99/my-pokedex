@@ -1,21 +1,35 @@
+// NEXT
 import { NextResponse } from "next/server";
-import redisClient from '../../../../lib/redis';
+// CONTAINERS
+import redisClient from "../../../../lib/redis";
+// INTERFACES
 import { Pokemon } from "@/app/types";
 
 export async function GET(request: Request) {
+  const PROD = true; // only use Redis on production
+
   const { searchParams } = new URL(request.url);
   const name = searchParams.get("name");
 
   if (!name) {
-    return NextResponse.json({ error: "Pokemon name is required" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Pokemon name is required" },
+      { status: 400 }
+    );
   }
 
   try {
     // Check Redis cache
-    const cachedData = await redisClient.get(name);
-    if (cachedData) {
-      return NextResponse.json(JSON.parse(cachedData) as Pokemon);
-    } else {
+    if (PROD) {
+      const cachedData = await redisClient.get(name);
+      if (cachedData) {
+        console.log(`${name} was found in the Redis cache!`);
+        return NextResponse.json(JSON.parse(cachedData) as Pokemon);
+      } else {
+        console.log(
+          `${name} was not found in the Redis cache. Fetching from PokeAPI...`
+        );
+      }
     }
 
     // Fetch from PokeAPI if not cached
@@ -23,8 +37,10 @@ export async function GET(request: Request) {
     if (!response.ok) throw new Error("Failed to fetch from PokeAPI");
 
     const data = (await response.json()) as Pokemon;
-    // Cache for 1 hour
-    await redisClient.set(name, JSON.stringify(data), {EX: 3600}); 
+    // Save in cache for 1 hour
+    if (PROD) {
+      await redisClient.set(name, JSON.stringify(data), { EX: 3600 });
+    }
 
     return NextResponse.json(data);
   } catch (error: any) {

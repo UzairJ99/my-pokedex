@@ -42,7 +42,8 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div className="pokedexContainer">
+      <h1 className="pokedexName">Welcome to MyPokédex</h1>
       <textarea
         placeholder="Enter Pokémon name"
         onChange={(e) => {
@@ -51,10 +52,11 @@ export default function Home() {
         }}
         value={search}
         onKeyDown={handleKeyDown}
+        rows={1}
       />
-      <div>
-        <button className="searchBtn" onClick={() => handleSearch(search)}>Search</button>
-      </div>
+      <button className="searchBtn" onClick={() => handleSearch(search)}>
+        Search
+      </button>
       {error && <div>Error: {error}</div>}
       {pokemon && <PokemonDisplay pokemon={pokemon} />}
     </div>

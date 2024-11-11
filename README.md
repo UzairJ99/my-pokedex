@@ -53,7 +53,7 @@ The app is dockerized for easier deployment and security. Two items in particula
 
 The dockerfile for the application is just an exact copy of the Next.js dockerfile example since no other configuration changes needed to be made.
 
-When code is updated, the docker container needs to be rebuilt. Since we have a docker-compose file, we can just run
+When code is updated, the docker container needs to be rebuilt. Since we have a docker-compose file, we can just run:
 ```bash
 docker-compose up --build
 ```
