@@ -5,7 +5,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --pokedex-color: #891d1d;
+  --pokedex-color: #b42424;
+  --dark-red: #d90429;
+  --red: #ef233c;
+  --grey: #edf2f4;
+  --grey-mid: #8d99ae;
+  --grey-dark: #333442;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,8 +30,52 @@ textarea {
   color: black;
   width: 50%;
   border-radius: 5px;
-  padding: 2vw;
+  padding: 1vw;
   margin: 1vw;
+}
+
+.backdrop {
+  background-color: var(--grey-dark);
+  z-index: -1;
+  margin-top: -20vh;
+  height: 50vh;
+  width: 100%;
+  position: absolute;
+  -webkit-transform: skewY(5deg);
+  -moz-transform: skewY(5deg);
+  -ms-transform: skewY(5deg);
+  -o-transform: skewY(5deg);
+  transform: skewY(5deg);
+}
+
+.pokeballDesign {
+  background-color: var(--grey);
+  z-index: -1;
+  height: 30vh;
+  width: 30vh;
+  position: absolute;
+  border-radius: 100%;
+}
+
+.topPokeballDesign {
+  background-color: var(--grey);
+  z-index: -1;
+  height: 20vh;
+  width: 20vh;
+  position: relative;
+  border-radius: 100%;
+  box-shadow: -1px 0px 7px var(--grey-mid);
+  margin: auto auto;
+}
+
+.pokeball {
+  z-index: -1;
+  margin-top: 20%;
+  height: 30vh;
+  width: 30vh;
+  position: absolute;
+  margin-left: -100%;
+  display: flex;
 }
 
 .pokedexContainer {
@@ -46,7 +95,7 @@ textarea {
 }
 
 .searchBtn {
-  background-color: rgb(216, 92, 92);
+  background-color: var(--grey-mid);
   color: black;
   padding: 1vw 2vw;
   border-radius: 5px;

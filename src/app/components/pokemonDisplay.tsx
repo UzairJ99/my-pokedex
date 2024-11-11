@@ -16,27 +16,35 @@ export default function PokemonDisplay({ pokemon }: PokemonDisplayProps) {
     pokemon && (
       <div className={styles.pokemonDisplay}>
         <h1 className={styles.pokemonName}>{pokemon.name.toUpperCase()}</h1>
-        <Image
-          src={pokemon.sprites.front_default}
-          alt={pokemon.name}
-          height={200}
-          width={200}
-        />
-        <div className={styles.pokemonStat}>
-          <div>Height</div>
-          <div>{pokemon.height / 10}'</div>
-        </div>
-        <div className={styles.pokemonStat}>
-          <div>Weight</div>
-          <div>{pokemon.weight / 10}lbs</div>
-        </div>
-        <div className={styles.pokemonStat}>
-          <div>Type</div>
-          <div>{pokemon.types[0].type.name}</div>
-        </div>
-        <div className={styles.pokemonStat}>
-          <div>Ability</div>
-          <div>{pokemon.abilities[0].ability.name}</div>
+
+        <div className={styles.pokemonInfoGrid}>
+          <div className={styles.pokemonImageBox}>
+            <Image
+              className={styles.pokemonSprite}
+              src={pokemon.sprites.front_default}
+              alt={pokemon.name}
+              height={300}
+              width={300}
+            />
+          </div>
+          <div>
+            <div className={styles.pokemonStat}>
+              <div>Height</div>
+              <div>{pokemon.height / 10}'</div>
+            </div>
+            <div className={styles.pokemonStat}>
+              <div>Weight</div>
+              <div>{pokemon.weight / 10}lbs</div>
+            </div>
+            <div className={styles.pokemonStat}>
+              <div>Type</div>
+              <div>{pokemon.types[0].type.name}</div>
+            </div>
+            <div className={styles.pokemonStat}>
+              <div>Ability</div>
+              <div>{pokemon.abilities[0].ability.name}</div>
+            </div>
+          </div>
         </div>
       </div>
     )

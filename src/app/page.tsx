@@ -59,6 +59,12 @@ export default function Home() {
       </button>
       {error && <div>Error: {error}</div>}
       {pokemon && <PokemonDisplay pokemon={pokemon} />}
+
+      <div className="backdrop"></div>
+      <div className="pokeball">
+        <div className="pokeballDesign"></div>
+        <div className="topPokeballDesign"></div>
+      </div>
     </div>
   );
 }
