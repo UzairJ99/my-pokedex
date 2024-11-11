@@ -23,3 +23,9 @@ body {
 textarea {
   color: black;
 }
+
+.searchBtn {
+  background-color: rgb(216, 92, 92);
+  color: black;
+  padding: 1vw 2vw;
+}
