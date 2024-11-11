@@ -31,7 +31,7 @@ export default function PokemonDisplay({ pokemon }: PokemonDisplayProps) {
           <div>
             <PokemonStat
               dataKey="Height"
-              dataValue={String(pokemon.weight / 10)}
+              dataValue={String(pokemon.height / 10)}
               units="'"
             />
             <PokemonStat

@@ -19,7 +19,7 @@ export default function PokemonStat({
     <div className={styles.pokemonStat}>
       <div>{dataKey}</div>
       <div>
-        {dataValue} {units}
+        {dataValue}{units}
       </div>
     </div>
   );
