@@ -5,6 +5,7 @@ import styles from "./pokemonDisplay.module.scss";
 import Image from "next/image";
 // INTERFACES
 import { Pokemon } from "@/app/types";
+import PokemonStat from "./pokemonStat";
 
 // set props to use the Pokemon interface if pokemon is existent
 interface PokemonDisplayProps {
@@ -28,22 +29,26 @@ export default function PokemonDisplay({ pokemon }: PokemonDisplayProps) {
             />
           </div>
           <div>
-            <div className={styles.pokemonStat}>
-              <div>Height</div>
-              <div>{pokemon.height / 10}'</div>
-            </div>
-            <div className={styles.pokemonStat}>
-              <div>Weight</div>
-              <div>{pokemon.weight / 10}lbs</div>
-            </div>
-            <div className={styles.pokemonStat}>
-              <div>Type</div>
-              <div>{pokemon.types[0].type.name}</div>
-            </div>
-            <div className={styles.pokemonStat}>
-              <div>Ability</div>
-              <div>{pokemon.abilities[0].ability.name}</div>
-            </div>
+            <PokemonStat
+              dataKey="Height"
+              dataValue={String(pokemon.weight / 10)}
+              units="'"
+            />
+            <PokemonStat
+              dataKey="Weight"
+              dataValue={String(pokemon.weight / 10)}
+              units="lbs"
+            />
+            <PokemonStat
+              dataKey="Type"
+              dataValue={pokemon.types[0].type.name}
+              units=""
+            />
+            <PokemonStat
+              dataKey="Ability"
+              dataValue={pokemon.abilities[0].ability.name}
+              units=""
+            />
           </div>
         </div>
       </div>
