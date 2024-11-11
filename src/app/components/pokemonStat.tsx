@@ -1,6 +1,6 @@
 "use client";
 // STYLES
-import styles from "./pokemonDisplay.module.scss";
+import styles from "./pokemonStat.module.scss";
 
 
 // INTERFACES
