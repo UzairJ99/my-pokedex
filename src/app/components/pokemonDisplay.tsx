@@ -23,6 +23,7 @@ export default function PokemonDisplay({pokemon}: PokemonDisplayProps) {
       <div>height: {pokemon.height / 10}'</div>
       <div>weight: {pokemon.weight / 10}lbs</div>
       <div>type: {pokemon.types[0].type.name}</div>
+      <div>abilities: {pokemon.abilities[0].ability.name}</div>
     </div>
   );
 }

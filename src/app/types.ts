@@ -5,6 +5,13 @@ export interface PokemonType {
     }
 }
 
+// Pokemon abilities are stored in lists of abilities with their name
+export interface PokemonAbility {
+    ability: {
+        name: string
+    }
+}
+
 // all stats for a pokemon
 export interface Pokemon {
     name: string,
@@ -14,4 +21,5 @@ export interface Pokemon {
         front_default: string
     },
     types: PokemonType[]
+    abilities: PokemonAbility[]
 }
