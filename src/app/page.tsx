@@ -2,8 +2,7 @@
 // REACT
 import { useState } from "react";
 // COMPONENTS
-import Image from "next/image";
-
+import PokemonDisplay from "./components/pokemonDisplay";
 
 export default function Home() {
   const [pokemon, setPokemon] = useState();
@@ -19,24 +18,20 @@ export default function Home() {
     fetchPokemon();
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
     <div>
-      <textarea onChange={(e) => setSearch(e.target.value)} />
+      <textarea
+        onChange={(e) => setSearch(e.target.value)}
+        onKeyDown={handleKeyDown}
+      />
       <button onClick={handleSearch}>Search</button>
-      {pokemon && (
-        <div>
-          <h1>{pokemon["name"]}</h1>
-          <Image
-            src={pokemon["sprites"]["front_default"]}
-            alt={pokemon["name"]}
-            height={200}
-            width={200}
-          />
-          <div>height: {pokemon["height"] / 10}'</div>
-          <div>weight: {pokemon["weight"] / 10}lbs</div>
-          <div>type: {pokemon["types"][0]["type"]["name"]}</div>
-        </div>
-      )}
+      {pokemon && <PokemonDisplay pokemon={pokemon} />}
     </div>
   );
 }
