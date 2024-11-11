@@ -1,5 +1,12 @@
 services:
   redis:
-    image: redis:latest
+    image: redis
+    container_name: redis
+  mypokedex:
+    build: .
     ports:
-      - "6379:6379"
+      - '3000:3000'
+    environment:
+      - REDIS_HOST=redis
+    depends_on:
+      - redis

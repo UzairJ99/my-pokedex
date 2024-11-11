@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
-import { Redis } from "ioredis";
+import redisClient from '../../../../lib/redis';
 import { Pokemon } from "@/app/types";
-
-const redis = new Redis();
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -14,10 +12,12 @@ export async function GET(request: Request) {
 
   try {
     // Check Redis cache
-    const cachedData = await redis.get(name);
+    const cachedData = await redisClient.get(name);
     if (cachedData) {
       console.log("found in Redis")
       return NextResponse.json(JSON.parse(cachedData) as Pokemon);
+    } else {
+      console.log("NOT found in Redis")
     }
 
     // Fetch from PokeAPI if not cached
@@ -25,7 +25,8 @@ export async function GET(request: Request) {
     if (!response.ok) throw new Error("Failed to fetch from PokeAPI");
 
     const data = (await response.json()) as Pokemon;
-    await redis.set(name, JSON.stringify(data), "EX", 3600); // Cache for 1 hour
+    // Cache for 1 hour
+    await redisClient.set(name, JSON.stringify(data), {EX: 3600}); 
 
     return NextResponse.json(data);
   } catch (error: any) {
