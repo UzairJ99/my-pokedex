@@ -2,19 +2,13 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+First, ensure you have docker installed.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+docker-compose up
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open Docker desktop or use the CLI to ensure the containers are running and then go to [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Project Overview
 The My-Pokédex App is a responsive web application built with Next.js and TypeScript that allows users to search for Pokémon by name and view details such as type, abilities, and base stats. The app fetches data from the PokeAPI, caches responses in Redis to improve performance and reduce API calls, and is containerized using Docker for consistency across development, testing, and production environments. The project is integrated with a CI/CD pipeline for automated testing and deployment, ensuring reliable updates and a smooth development process.
@@ -47,3 +41,10 @@ Improve Performance: Caching with Redis reduces response times and minimizes API
 Scalability: Docker enables easy scaling and deployment to various environments.
 
 Streamlined Development: CI/CD pipeline allows automated testing and deployment, minimizing downtime and maintaining code quality.
+
+## Key Notes
+The application separates the api fetches from the client side code, which is achieved by having our fetchPokemon function calling the PokeApi in it's own file: [app/api/fetchPokemon/route.ts](https://github.com/UzairJ99/my-pokedex/blob/main/src/app/api/fetchPokemon/route.ts). This allows for separation of concerns so that the page component's job is to only render the UI.
+
+The app is dockerized for easier deployment and security. Two items in particular are dockerized: the My-Pokedex App itself, and Redis. An issue faced when initially connecting the two instances was the application was unable to connect to the Redis host, because Redis was blocking any outside connectivity. To resolve this, I put the redis and my-pokedex containers on the same network. This was done with the configuration code in [docker-compose.yml](https://github.com/UzairJ99/my-pokedex/blob/main/docker-compose.yml). Putting them on the same network allowed them to still be in their own containers while still being able to communicate.
+
+The dockerfile for the application is just an exact copy of the Next.js dockerfile example since no other configuration changes needed to be made.
