@@ -14,10 +14,8 @@ export async function GET(request: Request) {
     // Check Redis cache
     const cachedData = await redisClient.get(name);
     if (cachedData) {
-      console.log("found in Redis")
       return NextResponse.json(JSON.parse(cachedData) as Pokemon);
     } else {
-      console.log("NOT found in Redis")
     }
 
     // Fetch from PokeAPI if not cached
