@@ -1,25 +1,9 @@
 "use client";
 // STYLES
 import styles from "./pokemonStat.module.scss";
-
-
 // INTERFACES
-interface PokemonStatProps {
-  dataKey: string;
-  dataValue: string;
-}
+import { PokemonStatProps, StatMap } from "../types";
 
-interface IObjectKeys {
-    // needed to set type of key and value for the below stat map
-    [key: string]: string | string;
-}
-
-interface statMap extends IObjectKeys{
-    readonly height: string;
-    readonly weight: string;
-    readonly type: string;
-    readonly ability: string;
-}
 
 export default function PokemonStat({
   dataKey,
@@ -27,7 +11,7 @@ export default function PokemonStat({
 }: PokemonStatProps) {
 
     // map units
-    let dataUnitMap:statMap = {
+    let dataUnitMap:StatMap = {
         height: "'",
         weight: "lbs",
         type: "",

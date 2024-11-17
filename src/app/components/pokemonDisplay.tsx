@@ -4,13 +4,8 @@ import styles from "./pokemonDisplay.module.scss";
 // COMPONENTS
 import Image from "next/image";
 // INTERFACES
-import { Pokemon } from "@/app/types";
+import { PokemonDisplayProps } from "@/app/types";
 import PokemonStat from "./pokemonStat";
-
-// set props to use the Pokemon interface if pokemon is existent
-interface PokemonDisplayProps {
-  pokemon: Pokemon | null;
-}
 
 export default function PokemonDisplay({ pokemon }: PokemonDisplayProps) {
   return (
