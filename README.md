@@ -37,10 +37,12 @@ Caching: Redis for storing and caching frequently requested data
 
 Containerization: Docker for consistent environment setup and easy deployment
 
+Testing: Unit tests developed using Jest to test React components such as PokeStat to ensure correct data is being displayed. These tests are also ran on every deployment through the dockerfile.
+
 CI/CD: GitHub Actions for automated builds, tests, and deployments
 
 ## Project Goals
-Improve Performance: Caching with Redis reduces response times and minimizes API requests.
+Improve Performance: Caching with Redis reduces response times and minimizes API requests. I used lodash as well to debounce API calls. This allows further reduction of API calls on change handlers.
 
 Scalability: Docker enables easy scaling and deployment to various environments.
 

@@ -35,6 +35,7 @@ export default function Home() {
     []
   );
 
+  // Allows search to be triggered upon the Enter key being pressed
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === "Enter") {
       handleSearch(search);
@@ -60,6 +61,7 @@ export default function Home() {
       {error && <div>Error: {error}</div>}
       {pokemon && <PokemonDisplay pokemon={pokemon} />}
 
+      {/* Backdrop UI */}
       <div className="backdrop"></div>
       <div className="pokeball">
         <div className="pokeballDesign"></div>
