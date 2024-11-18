@@ -57,9 +57,9 @@ export default function Home() {
         onKeyDown={handleKeyDown}
         rows={1}
       />
-      <button className="searchBtn" onClick={() => handleSearch(search)}>
+      {/* <button className="searchBtn" onClick={() => handleSearch(search)}>
         Search
-      </button>
+      </button> */}
       {error && <div>Error: {error}</div>}
       {pokemon && <PokemonDisplay pokemon={pokemon} />}
 

@@ -11,8 +11,6 @@ export default function PokemonDisplay({ pokemon }: PokemonDisplayProps) {
   return (
     pokemon && (
       <div className={styles.pokemonDisplay}>
-        <h1 className={styles.pokemonName}>{pokemon.name.toUpperCase()}</h1>
-
         <div className={styles.pokemonInfoGrid}>
           <div className={styles.pokemonImageBox}>
             <Image
@@ -22,8 +20,9 @@ export default function PokemonDisplay({ pokemon }: PokemonDisplayProps) {
               height={300}
               width={300}
             />
+            <h1 className={styles.pokemonName}>{pokemon.name.toUpperCase()}</h1>
           </div>
-          <div>
+          <div className="statsContainer">
             <PokemonStat
               dataKey="Height"
               dataValue={String(pokemon.height / 10)}

@@ -13,7 +13,7 @@ export default function PokemonStat({
     // map units
     let dataUnitMap:StatMap = {
         height: "'",
-        weight: "lbs",
+        weight: " lbs",
         type: "",
         ability: ""
     }

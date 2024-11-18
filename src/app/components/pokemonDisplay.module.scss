@@ -11,6 +11,10 @@
     align-items: center;
 }
 
+.statsContainer {
+    align-items: center;
+}
+
 .pokemonImageBox {
     border-radius: 25px;
     // border: 8px solid var(--red);
@@ -33,7 +37,7 @@
     font-weight: bold;
     font-size: clamp(20px, 1.5vw, 14px);
     margin-top: 2vw;
-    color: black;
+    text-align: center;
 }
 
 .pokemonInfoGrid {
@@ -49,6 +53,7 @@
         flex-direction: column;
         height: 65vh;
         justify-content: space-between;
+        margin-top: 6vh;
     }
 
     .pokemonImageBox {
