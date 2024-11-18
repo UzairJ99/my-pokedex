@@ -24,19 +24,32 @@ body {
   color: var(--foreground);
   background: var(--pokedex-color);
   font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
 }
 
 textarea {
   color: black;
   width: 50%;
   border-radius: 5px;
-  padding: 1vw;
+  padding: 2vw;
   margin: 1vw;
   min-width: 300px;
   min-height: 1rem;
+  resize: none;
 }
 
 .screen {
+  background-color: var(--pokedex-color);
+  height: 120vh;
+  width: 100%;
+  position: absolute;
+  top: -10%;
+  border-radius: 60px;
+  z-index: 0;
+  transition: all 0.5s ease;
+}
+
+.screenTop {
   background-color: var(--grey);
   height: 50vh;
   width: 100%;
@@ -49,18 +62,26 @@ textarea {
 .backdrop {
   background-color: var(--grey-dark);
   z-index: -1;
-  top: 20%;
+  top: -10%;
   height: 60vh;
   width: 101%;
   position: absolute;
-  -webkit-transform: skewY(5deg);
-  -moz-transform: skewY(5deg);
-  -ms-transform: skewY(5deg);
-  -o-transform: skewY(5deg);
-  transform: skewY(5deg);
+  transition-delay: 2s;
+  transition: all 0.5s ease;
 }
 
-.pokeballDesign {
+.backdropDrop {
+  background-color: var(--grey-dark);
+  z-index: -1;
+  top: 20%;
+  -webkit-transform: skewY(15deg);
+  -moz-transform: skewY(15deg);
+  -ms-transform: skewY(15deg);
+  -o-transform: skewY(15deg);
+  transform: skewY(15deg);
+}
+
+.pokeballDesign{
   background-color: var(--grey);
   z-index: -1;
   height: 30vh;
@@ -81,6 +102,21 @@ textarea {
 }
 
 .pokeball {
+  z-index: 1;
+  top: 35vh;
+  height: 30vh;
+  width: 30vh;
+  position: absolute;
+  margin-left: -100%;
+  display: flex;
+  transition: all 0.5s ease;
+}
+
+.pokeball:hover {
+  transform: scale(1.1);
+}
+
+.pokeballClicked {
   z-index: -1;
   top: 60%;
   height: 30vh;
@@ -92,13 +128,13 @@ textarea {
 
 .pokedexContainer {
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   margin: auto auto;
   align-items: center;
   justify-content: flex-start;
   margin-top: 5vh;
+  pointer-events: all;
 }
 
 .pokedexName {
@@ -106,6 +142,7 @@ textarea {
   color: black;
   font-size: clamp(20px, 3vw, 30px);
   margin-bottom: 2vw;
+  z-index: 3;
 }
 
 .searchBtn {

@@ -7,7 +7,10 @@ import Image from "next/image";
 import { PokemonDisplayProps } from "@/app/types";
 import PokemonStat from "./pokemonStat";
 
-export default function PokemonDisplay({ pokemon }: PokemonDisplayProps) {
+export default function PokemonDisplay({
+  pokemon,
+  closeHandler,
+}: PokemonDisplayProps) {
   return (
     pokemon && (
       <div className={styles.pokemonDisplay}>
@@ -29,7 +32,7 @@ export default function PokemonDisplay({ pokemon }: PokemonDisplayProps) {
             />
             <PokemonStat
               dataKey="Weight"
-              dataValue={String(pokemon.weight / 10)}    
+              dataValue={String(pokemon.weight / 10)}
             />
             <PokemonStat
               dataKey="Type"
@@ -40,6 +43,9 @@ export default function PokemonDisplay({ pokemon }: PokemonDisplayProps) {
               dataValue={pokemon.abilities[0].ability.name}
             />
           </div>
+        </div>
+        <div onClick={closeHandler} className={styles.closeBtn}>
+          CLOSE
         </div>
       </div>
     )

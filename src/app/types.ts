@@ -31,6 +31,7 @@ export interface Pokemon {
 // props for the pokemon display component
 export interface PokemonDisplayProps {
     pokemon: Pokemon | null;
+    closeHandler: () => void;
 }
 
 // props for the pokemon stat component

@@ -12,6 +12,7 @@ export default function Home() {
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
   const [search, setSearch] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
+  const [open, setOpen] = useState<boolean>(false);
 
   const fetchPokemon = async (query: string) => {
     try {
@@ -44,9 +45,16 @@ export default function Home() {
     }
   };
 
+  const handlePokedexState = () => {
+    setOpen(!open);
+    console.log(open);
+  };
+
   return (
     <div className="pokedexContainer">
-      <h1 className="pokedexName">MyPokédex</h1>
+      <h1 className="pokedexName">
+        {open ? "MyPokedex" : "Click Button to Open"}
+      </h1>
       <textarea
         placeholder="Enter Pokémon name"
         onChange={(e) => {
@@ -61,12 +69,17 @@ export default function Home() {
         Search
       </button> */}
       {error && <div>Error: {error}</div>}
-      {pokemon && <PokemonDisplay pokemon={pokemon} />}
+      {pokemon && (
+        <PokemonDisplay closeHandler={handlePokedexState} pokemon={pokemon} />
+      )}
 
       {/* Backdrop UI */}
-      <div className="backdrop"></div>
-      <div className="screen"></div>
-      <div className="pokeball">
+      <div className={`backdrop ${open && "backdropDrop"}`}></div>
+      <div className={`screen ${open && "screenTop"}`}></div>
+      <div
+        onClick={handlePokedexState}
+        className={`pokeball ${open && "pokeballClicked"}`}
+      >
         <div className="pokeballDesign"></div>
         <div className="topPokeballDesign"></div>
       </div>
