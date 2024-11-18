@@ -20,6 +20,12 @@
   }
 }
 
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 body {
   color: var(--foreground);
   background: var(--pokedex-color);
@@ -143,6 +149,13 @@ textarea {
   font-size: clamp(20px, 3vw, 30px);
   margin-bottom: 2vw;
   z-index: 3;
+}
+
+.pokedexSubtitle {
+  color: black;
+  font-size: clamp(20px, 3vw, 30px);
+  z-index: 3;
+  animation: blink 2s linear infinite;
 }
 
 .searchBtn {

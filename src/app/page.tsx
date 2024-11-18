@@ -45,16 +45,17 @@ export default function Home() {
     }
   };
 
+  // turns "on and off" the pokedex - triggers the animations
   const handlePokedexState = () => {
     setOpen(!open);
-    console.log(open);
   };
 
   return (
     <div className="pokedexContainer">
       <h1 className="pokedexName">
-        {open ? "MyPokedex" : "Click Button to Open"}
+        {open ? "MyPokedex" : "Welcome"}
       </h1>
+      {!open && <div className="pokedexSubtitle">Click the button to start</div>}
       <textarea
         placeholder="Enter Pokémon name"
         onChange={(e) => {
@@ -65,9 +66,6 @@ export default function Home() {
         onKeyDown={handleKeyDown}
         rows={1}
       />
-      {/* <button className="searchBtn" onClick={() => handleSearch(search)}>
-        Search
-      </button> */}
       {error && <div>Error: {error}</div>}
       {pokemon && (
         <PokemonDisplay closeHandler={handlePokedexState} pokemon={pokemon} />

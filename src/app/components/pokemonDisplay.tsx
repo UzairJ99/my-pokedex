@@ -45,7 +45,7 @@ export default function PokemonDisplay({
           </div>
         </div>
         <div onClick={closeHandler} className={styles.closeBtn}>
-          CLOSE
+          X
         </div>
       </div>
     )
