@@ -31,6 +31,7 @@ export default function Home() {
   const handleSearch = useCallback(
     _debounce((query: string) => {
       if (query) fetchPokemon(query);
+      setSearch("");
     }, 500),
     []
   );
@@ -39,12 +40,13 @@ export default function Home() {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === "Enter") {
       handleSearch(search);
+      setSearch("");
     }
   };
 
   return (
     <div className="pokedexContainer">
-      <h1 className="pokedexName">Welcome to MyPokédex</h1>
+      <h1 className="pokedexName">MyPokédex</h1>
       <textarea
         placeholder="Enter Pokémon name"
         onChange={(e) => {
@@ -63,6 +65,7 @@ export default function Home() {
 
       {/* Backdrop UI */}
       <div className="backdrop"></div>
+      <div className="screen"></div>
       <div className="pokeball">
         <div className="pokeballDesign"></div>
         <div className="topPokeballDesign"></div>

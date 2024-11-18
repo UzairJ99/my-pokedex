@@ -17,7 +17,7 @@ export default function PokemonDisplay({ pokemon }: PokemonDisplayProps) {
           <div className={styles.pokemonImageBox}>
             <Image
               className={styles.pokemonSprite}
-              src={pokemon.sprites.front_default}
+              src={pokemon.sprites.other.home.front_default}
               alt={pokemon.name}
               height={300}
               width={300}

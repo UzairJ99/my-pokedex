@@ -34,12 +34,22 @@ textarea {
   margin: 1vw;
 }
 
+.screen {
+  background-color: var(--grey);
+  height: 50vh;
+  width: 100%;
+  position: absolute;
+  top: -10%;
+  border-radius: 60px;
+  z-index: -1;
+}
+
 .backdrop {
   background-color: var(--grey-dark);
   z-index: -1;
-  margin-top: -20vh;
-  height: 50vh;
-  width: 100%;
+  top: 20%;
+  height: 60vh;
+  width: 101%;
   position: absolute;
   -webkit-transform: skewY(5deg);
   -moz-transform: skewY(5deg);
@@ -70,7 +80,7 @@ textarea {
 
 .pokeball {
   z-index: -1;
-  margin-top: 20%;
+  top: 60%;
   height: 30vh;
   width: 30vh;
   position: absolute;
@@ -91,7 +101,9 @@ textarea {
 
 .pokedexName {
   font-weight: bold;
+  color: black;
   font-size: clamp(20px, 3vw, 30px);
+  margin-bottom: 2vw;
 }
 
 .searchBtn {

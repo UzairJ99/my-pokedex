@@ -13,9 +13,9 @@
 
 .pokemonImageBox {
     border-radius: 25px;
-    border: 8px solid var(--red);
+    // border: 8px solid var(--red);
     padding: 1vw;
-    background-color: var(--grey);
+    // background-color: var(--grey);
     margin: 1vw 0vw;
     width: 100%;
     height: clamp(400px, 30vh, 500px);
@@ -32,6 +32,8 @@
 .pokemonName {
     font-weight: bold;
     font-size: clamp(20px, 1.5vw, 14px);
+    margin-top: 2vw;
+    color: black;
 }
 
 .pokemonInfoGrid {
@@ -45,6 +47,8 @@
     .pokemonInfoGrid {
         display: flex;
         flex-direction: column;
+        height: 65vh;
+        justify-content: space-between;
     }
 
     .pokemonImageBox {
