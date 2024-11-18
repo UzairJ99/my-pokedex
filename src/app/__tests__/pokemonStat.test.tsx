@@ -11,7 +11,7 @@ describe('PokemonStat Component', () => {
   it('renders with correct weight format and data', () => {
     render(<PokemonStat dataKey="Weight" dataValue="100" />);
     expect(screen.getByText("Weight")).toBeInTheDocument();
-    expect(screen.getByText("100lbs")).toBeInTheDocument();
+    expect(screen.getByText("100 lbs")).toBeInTheDocument();
   });
 
   it('renders with correct pokemon type data', () => {

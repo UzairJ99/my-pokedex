@@ -22,6 +22,7 @@ export default function PokemonDisplay({
               alt={pokemon.name}
               height={300}
               width={300}
+              priority
             />
             <h1 className={styles.pokemonName}>{pokemon.name.toUpperCase()}</h1>
           </div>
