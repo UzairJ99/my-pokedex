@@ -1,19 +1,32 @@
 "use client";
 // STYLES
 import styles from "./pokemonDisplay.module.scss";
+// REACT
+import { Fragment, useState } from "react";
 // COMPONENTS
 import Image from "next/image";
 // INTERFACES
 import { PokemonDisplayProps } from "@/app/types";
 import PokemonStat from "./pokemonStat";
+import LoadingSpinner from "./loadingSpinner";
+
 
 export default function PokemonDisplay({
   pokemon,
   closeHandler,
 }: PokemonDisplayProps) {
+
+  const [loading, setLoading] = useState<boolean>(true);
+
+
   return (
     pokemon && (
-      <div className={styles.pokemonDisplay}>
+      <Fragment>
+        <div className="loading" style={{display: loading ? "flex" : "none"}}>
+          <LoadingSpinner />
+        </div>
+
+        <div style={{opacity: loading ? 0 : 1}} className={styles.pokemonDisplay}>
         <div className={styles.pokemonInfoGrid}>
           <div className={styles.pokemonImageBox}>
             <Image
@@ -23,6 +36,7 @@ export default function PokemonDisplay({
               height={300}
               width={300}
               priority
+              onLoad={() => setLoading(false)}
             />
             <h1 className={styles.pokemonName}>{pokemon.name.toUpperCase()}</h1>
           </div>
@@ -49,6 +63,8 @@ export default function PokemonDisplay({
           X
         </div>
       </div>
+      </Fragment>
+      
     )
   );
 }

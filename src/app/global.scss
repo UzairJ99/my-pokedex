@@ -26,6 +26,19 @@
   }
 }
 
+@-moz-keyframes spin { 
+  100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+  100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+  100% { 
+      -webkit-transform: rotate(360deg); 
+      transform:rotate(360deg); 
+  } 
+}
+
 body {
   color: var(--foreground);
   background: var(--pokedex-color);
@@ -165,4 +178,16 @@ textarea {
   border-radius: 5px;
   margin: 1vw;
   width: 50%;
+}
+
+.loading {
+  height: 60vh;
+  margin: auto auto;
+  align-items: center;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  -webkit-animation:spin 1s linear infinite;
+    -moz-animation:spin 1s linear infinite;
+    animation:spin 1s linear infinite;
 }

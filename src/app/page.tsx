@@ -7,21 +7,25 @@ import _debounce from "lodash/debounce";
 import PokemonDisplay from "./components/pokemonDisplay";
 // INTERFACES
 import { Pokemon } from "./types";
+import LoadingSpinner from "./components/loadingSpinner";
 
 export default function Home() {
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
   const [search, setSearch] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
   const [open, setOpen] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const fetchPokemon = async (query: string) => {
     try {
+      setLoading(true);
       const res = await fetch(`/api/fetchPokemon?name=${query}`);
       if (!res.ok) throw new Error("Failed to fetch Pokémon data");
 
       const data: Pokemon = await res.json();
       setPokemon(data);
       setError(null);
+      setLoading(false);
     } catch (err: any) {
       setError(err.message);
       setPokemon(null);
@@ -67,7 +71,9 @@ export default function Home() {
         rows={1}
       />
       {error && <div>Error: {error}</div>}
-      {pokemon && (
+      {loading ? (
+        <div className="loading"><LoadingSpinner /></div>
+      ) : (
         <PokemonDisplay closeHandler={handlePokedexState} pokemon={pokemon} />
       )}
 
