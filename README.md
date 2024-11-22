@@ -53,7 +53,9 @@ The application separates the api fetches from the client side code, which is ac
 
 The app is dockerized for easier deployment and security. Two items in particular are dockerized: the My-Pokedex App itself, and Redis. An issue faced when initially connecting the two instances was the application was unable to connect to the Redis host, because Redis was blocking any outside connectivity. To resolve this, I put the redis and my-pokedex containers on the same network. This was done with the configuration code in [docker-compose.yml](https://github.com/UzairJ99/my-pokedex/blob/main/docker-compose.yml). Putting them on the same network allowed them to still be in their own containers while still being able to communicate.
 
-The dockerfile for the application is just an exact copy of the Next.js dockerfile example since no other configuration changes needed to be made.
+The dockerfile for the application is just a modified copy of the Next.js dockerfile example. The only change needed to be made was adding the `npm test` command to run the automated unit tests before the build step.
+
+To compare results of cached v.s. non-cached fetches, I used console.time() to track the time it takes for each respective function. From the output in the logs, it was clear the cache worked and reduced request time significantly (at least 50% and upto 90% in time reduction).
 
 When code is updated, the docker container needs to be rebuilt. Since we have a docker-compose file, we can just run:
 ```bash

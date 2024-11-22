@@ -4,10 +4,11 @@ import { useState, useCallback } from "react";
 // DEBOUNCING
 import _debounce from "lodash/debounce";
 // COMPONENTS
+import LoadingSpinner from "./components/loadingSpinner";
 import PokemonDisplay from "./components/pokemonDisplay";
 // INTERFACES
 import { Pokemon } from "./types";
-import LoadingSpinner from "./components/loadingSpinner";
+
 
 export default function Home() {
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
@@ -29,6 +30,7 @@ export default function Home() {
     } catch (err: any) {
       setError(err.message);
       setPokemon(null);
+      setLoading(false);
     }
   };
 
@@ -70,7 +72,7 @@ export default function Home() {
         onKeyDown={handleKeyDown}
         rows={1}
       />
-      {error && <div>Error: {error}</div>}
+      {error && <div className="errorMsg">Error: {error} :(</div>}
       {loading ? (
         <div className="loading"><LoadingSpinner /></div>
       ) : (
