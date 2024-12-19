@@ -59,7 +59,7 @@ export default function PokemonDisplay({
               dataValue={pokemon.abilities[0].ability.name}
             />
           </div>
-          <div>
+          <div className={styles.aiBattleDescription}>
             {battlePerformance}
           </div>
         </div>

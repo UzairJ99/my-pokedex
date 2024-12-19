@@ -67,6 +67,12 @@
     transform: scale(1.1);
 }
 
+.aiBattleDescription {
+    padding: 2vw;
+    background-color: var(--red);
+    border-radius: 20px;
+}
+
 // FOR RESIZING RESPONSIVENESS
 @media (max-width: 1400px) {
     .pokemonInfoGrid {
