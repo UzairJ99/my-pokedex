@@ -28,6 +28,10 @@ Mobile-First Responsive Design: Adapts seamlessly across various devices and scr
 
 Automated CI/CD Pipeline: Uses GitHub Actions for continuous integration and deployment, ensuring automated testing and updates.
 
+**NEW**
+## Latest features
+AI connectivity to give the user information about how this pokemon (the one being viewed) would match up against another pokemon (second input by the user).
+
 ## Tech Stack
 Frontend: Next.js (App Directory), TypeScript, CSS Modules
 
@@ -40,6 +44,8 @@ Containerization: Docker for consistent environment setup and easy deployment
 Testing: Unit tests developed using Jest to test React components such as PokeStat to ensure correct data is being displayed. These tests are also ran on every deployment through the dockerfile.
 
 CI/CD: GitHub Actions for automated builds, tests, and deployments
+
+**NEW** Gen AI: utilizing Meta Llama Vision Free to generate battle descriptions for the Pokemon
 
 ## Project Goals
 Improve Performance: Caching with Redis reduces response times and minimizes API requests. I used lodash as well to debounce API calls. This allows further reduction of API calls on change handlers.
@@ -61,6 +67,3 @@ When code is updated, the docker container needs to be rebuilt. Since we have a 
 ```bash
 docker-compose up --build
 ```
-
-## Upcoming features
-AI connectivity to give the user information about how this pokemon (the one being viewed) would match up against another pokemon (second input by the user).
