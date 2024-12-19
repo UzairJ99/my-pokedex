@@ -16,6 +16,7 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [open, setOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
+  const [response, setResponse] = useState<string | null>(null);
 
   const fetchPokemon = async (query: string) => {
     try {
@@ -34,10 +35,35 @@ export default function Home() {
     }
   };
 
+  const getBattlePerformance = async (query: string) => {
+    try {
+      const res = await fetch('/api/aiBattle', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: query }),
+      });
+
+      if (!res.ok) {
+        throw new Error('Failed to fetch response');
+      }
+
+      const data = await res.json();
+      setResponse(data || 'No response');
+    } catch (err: any) {
+      setError(err.message);
+      setPokemon(null);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   // Debounced handler
   const handleSearch = useCallback(
     _debounce((query: string) => {
-      if (query) fetchPokemon(query);
+      if (query) {
+        fetchPokemon(query);
+        getBattlePerformance(query);
+      }
       setSearch("");
     }, 500),
     []
@@ -76,7 +102,7 @@ export default function Home() {
       {loading ? (
         <div className="loading"><LoadingSpinner /></div>
       ) : (
-        <PokemonDisplay closeHandler={handlePokedexState} pokemon={pokemon} />
+        <PokemonDisplay closeHandler={handlePokedexState} pokemon={pokemon} battlePerformance={response} />
       )}
 
       {/* Backdrop UI */}

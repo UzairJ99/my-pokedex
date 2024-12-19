@@ -32,6 +32,7 @@ export interface Pokemon {
 export interface PokemonDisplayProps {
     pokemon: Pokemon | null;
     closeHandler: () => void;
+    battlePerformance: string | null;
 }
 
 // props for the pokemon stat component

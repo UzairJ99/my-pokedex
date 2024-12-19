@@ -14,6 +14,7 @@ import LoadingSpinner from "./loadingSpinner";
 export default function PokemonDisplay({
   pokemon,
   closeHandler,
+  battlePerformance
 }: PokemonDisplayProps) {
 
   const [loading, setLoading] = useState<boolean>(true);
@@ -57,6 +58,9 @@ export default function PokemonDisplay({
               dataKey="Ability"
               dataValue={pokemon.abilities[0].ability.name}
             />
+          </div>
+          <div>
+            {battlePerformance}
           </div>
         </div>
         <div onClick={closeHandler} className={styles.closeBtn}>
